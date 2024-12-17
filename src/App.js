@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Article from "./Article";
 import "./App.css";
 
 const WIKIPEDIA_API_URL = "https://en.wikipedia.org/w/api.php";
@@ -41,6 +42,19 @@ function App() {
     return response.data.query.random[0];
   };
 
+  const fetchArticleLinks = async (title) => {
+    const params = {
+      action: "parse",
+      page: title,
+      format: "json",
+      prop: "links",
+      origin: "*",
+    };
+
+    const response = await axios.get(WIKIPEDIA_API_URL, { params });
+    return response.data.parse.links;
+  };
+
   return (
     <div className="App">
       <h1>Wiki Race Game</h1>
@@ -52,6 +66,7 @@ function App() {
       ) : (
         <div>Loading...</div>
       )}
+      {currentArticle && <Article links={currentArticle.links} />}
     </div>
   );
 }
