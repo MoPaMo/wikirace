@@ -1,27 +1,108 @@
 .App {
   text-align: center;
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.2em;
+  color: #34495e;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+strong {
+  color: #e74c3c;
+  font-weight: 600;
 }
 
 button {
-  background-color: #0078d7;
+  background-color: #3498db;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 16px;
   margin: 5px;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
-  background-color: #005a9e;
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .path {
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: left;
   display: inline-block;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
 }
+
+.path h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 li {
   display: inline;
+  margin-right: 10px;
+  color: #7f8c8d;
+}
+
+li:last-child {
+  color: #e74c3c;
+}
+
+.article-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.article-container h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.article-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.loading {
+  font-size: 1.5em;
+  color: #3498db;
+  margin: 50px 0;
 }
