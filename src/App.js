@@ -10,6 +10,7 @@ function App() {
   const [targetArticle, setTargetArticle] = useState(null);
   const [currentArticle, setCurrentArticle] = useState(null);
   const [path, setPath] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchRandomArticles();
@@ -19,12 +20,17 @@ function App() {
     try {
       const randomStart = await fetchRandomArticle();
       const randomTarget = await fetchRandomArticle();
+
+      const startLinks = await fetchArticleLinks(randomStart.title);
+
       setStartArticle(randomStart);
       setTargetArticle(randomTarget);
-      setCurrentArticle(randomStart);
+      setCurrentArticle({ title: randomStart.title, links: startLinks });
       setPath([randomStart.title]);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching random articles:", error);
+      setLoading(false);
     }
   };
 
@@ -71,7 +77,16 @@ function App() {
     }
   };
 
-  if (!currentArticle || !targetArticle || !startArticle) {
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (
+    !currentArticle ||
+    !currentArticle.links ||
+    !targetArticle ||
+    !startArticle
+  ) {
     return <div>Loading...</div>;
   }
 
