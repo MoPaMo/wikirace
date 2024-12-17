@@ -102,7 +102,9 @@ function App() {
         <h2>Path Taken:</h2>
         <ul>
           {path.map((title, index) => (
-            <li key={index}>{title}</li>
+            <li key={index}>
+              {title} {">"}
+            </li>
           ))}
         </ul>
       </div>
