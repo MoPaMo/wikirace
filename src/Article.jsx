@@ -1,7 +1,7 @@
 import React from "react";
 
 function Article({ links, onLinkClick }) {
-    console.log(JSON.stringify(links));
+  console.log(JSON.stringify(links));
   return (
     <div>
       <h2>Current Article Links:</h2>
