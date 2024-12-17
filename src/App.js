@@ -92,7 +92,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Wiki Race Game</h1>
+      <h1>WikiRace</h1>
       <p>
         Navigate from <strong>{startArticle.title}</strong> to{" "}
         <strong>{targetArticle.title}</strong>
