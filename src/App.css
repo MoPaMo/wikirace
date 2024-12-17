@@ -22,3 +22,6 @@ button:hover {
   text-align: left;
   display: inline-block;
 }
+li {
+    display: inline;
+  }
