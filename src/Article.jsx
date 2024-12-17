@@ -1,22 +1,19 @@
 import React from "react";
 
 function Article({ links, onLinkClick }) {
-  console.log(JSON.stringify(links));
   return (
-    <div>
+    <div className="article-container">
       <h2>Current Article Links:</h2>
-      <ul>
+      <div className="article-links">
         {links.map(
           (link, index) =>
             link.exists !== undefined && (
-              <li key={index}>
-                <button onClick={() => onLinkClick(link["*"])}>
-                  {link["*"]}
-                </button>
-              </li>
+              <button key={index} onClick={() => onLinkClick(link["*"])}>
+                {link["*"]}
+              </button>
             )
         )}
-      </ul>
+      </div>
     </div>
   );
 }
