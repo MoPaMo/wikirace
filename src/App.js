@@ -55,18 +55,42 @@ function App() {
     return response.data.parse.links;
   };
 
+  const handleLinkClick = async (title) => {
+    if (title === targetArticle.title) {
+      alert(`Congratulations! You reached the target: ${title}`);
+      fetchRandomArticles();
+      return;
+    }
+
+    try {
+      const links = await fetchArticleLinks(title);
+      setCurrentArticle({ title, links });
+      setPath([...path, title]);
+    } catch (error) {
+      console.error("Error fetching article links:", error);
+    }
+  };
+
+  if (!currentArticle || !targetArticle || !startArticle) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="App">
       <h1>Wiki Race Game</h1>
-      {startArticle && targetArticle ? (
-        <p>
-          Navigate from <strong>{startArticle.title}</strong> to{" "}
-          <strong>{targetArticle.title}</strong>
-        </p>
-      ) : (
-        <div>Loading...</div>
-      )}
-      {currentArticle && <Article links={currentArticle.links} />}
+      <p>
+        Navigate from <strong>{startArticle.title}</strong> to{" "}
+        <strong>{targetArticle.title}</strong>
+      </p>
+      <Article links={currentArticle.links} onLinkClick={handleLinkClick} />
+      <div className="path">
+        <h2>Path Taken:</h2>
+        <ul>
+          {path.map((title, index) => (
+            <li key={index}>{title}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
